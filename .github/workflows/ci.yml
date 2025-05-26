@@ -25,9 +25,10 @@ jobs:
         run: npm test
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: |
+      github.ref == 'refs/heads/main' &&
+       contains(github.event.head_commit.message, '#deploy_now')
     runs-on: ubuntu-latest
-
     steps:
       - name: Trigger Render Deploy
         run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
