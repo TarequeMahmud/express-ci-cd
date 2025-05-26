@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello from CI/CD Express App!");
+app.get('/', (req, res) => {
+  res.send('Hello from CI/CD Express App!');
 });
 
 if (require.main === module) {
